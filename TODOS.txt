@@ -1,0 +1,5 @@
+1) Make buttons on the homepage list underneath eachother, instead of alongside eachother.
+
+2) Change styling to allow for lowercase letters in input boxes.
+
+3) Figure out how to properly redirect the page after retrieving a successful query in read.php.
