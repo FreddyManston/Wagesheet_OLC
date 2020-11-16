@@ -14,8 +14,6 @@ if (isset($_POST['submit']))
 		require "config.php";
 		require "common.php";
 
-		$connection = new PDO($dsn, $username, $password, $options);
-
 		$query_criteria = array(
 			"firstname"	=> $_POST['firstname'],
 			"lastname"	=> $_POST['lastname'],
@@ -40,7 +38,7 @@ if (isset($_POST['submit']))
 		$sql = substr($sql, 0, -4);
 		echo $sql;
 
-		$statement = $connection->prepare($sql);
+		$statement = $db->prepare($sql);
 		$statement->execute();
 
 		$result = $statement->fetchAll();
