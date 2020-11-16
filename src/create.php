@@ -16,7 +16,8 @@
 				"contact"	=> $_POST['contact'],
 				"sa_id"		=> $_POST['sa_id'],
 				"bank"		=> $_POST['bank'],
-				"account"	=> $_POST['account']
+				"account"	=> $_POST['account'],
+				"date"		=> date("Y-m-d")
 			);
 
 			$sql = sprintf(
