@@ -1,23 +1,85 @@
-<?php
-# This function reads your DATABASE_URL config var and returns a connection
-# string suitable for pg_connect. Put this in your app.
-function pg_connection_string_from_database_url() {
-  extract(parse_url($_ENV["DATABASE_URL"]));
-  return "user=$user password=$pass host=$host dbname=" . substr($path, 1); # <- you may want to add sslmode=require there too
-}
+<!--
+	Identity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 
-# Here we establish the connection. Yes, that's all.
-$pg_conn = pg_connect(pg_connection_string_from_database_url());
+<!-- HEADER -->
+<?php include "src/templates/header.php"; ?>
 
-# Now let's use the connection for something silly just to prove it works:
-$result = pg_query($pg_conn, "SELECT relname FROM pg_stat_user_tables WHERE schemaname='public'");
+	<!-- MAIN -->
+	<section id="main">
+		<header>
+			<span class="avatar"><img src="src/images/avatar.jpg" alt="" /></span>
+			<h1>OLC Wagesheet</h1>
+			<p>
+				<!--Quality Through 
+				<br>
+				Experience.-->
+				LIVE IN THE NEXT
+			</p>
+		</header>
+		
+		<hr/>
 
-print "<pre>\n";
-if (!pg_num_rows($result)) {
-  print("Your connection is working, but your database is empty.\nFret not. This is expected for new apps.\n");
-} else {
-  print "Tables in your database:\n";
-  while ($row = pg_fetch_row($result)) { print("- $row[0]\n"); }
-}
-print "\n";
-?>
+		<ul class="actions special">
+			<li><a href="src/create.php" class="button">Add Promoter</a></li>
+			<li><a href="src/read.php" class="button">Find Promoter</a></li>
+		</ul>
+		<!-- ... FUTURE IMPORT / EXPORT FUNCTIONALITY ...
+		<ul class="actions special">
+			<li><a href="#" class="button">Import Data</a></li>
+			<li><a href="#" class="button">Export Data</a></li>
+		</ul>
+		-->
+
+		<hr/>
+		
+		<!-- ... FUTURE USER SIGN-IN FUNCTIONALITY ...
+		<h2>Extra Stuff!</h2>
+		<form method="post" action="#">
+			<div class="fields">
+				<div class="field">
+					<input type="text" name="name" id="name" placeholder="Name" />
+				</div>
+				<div class="field">
+					<input type="email" name="email" id="email" placeholder="Email" />
+				</div>
+				<div class="field">
+					<select name="department" id="department">
+						<option value="">Department</option>
+						<option value="sales">Sales</option>
+						<option value="tech">Tech Support</option>
+						<option value="null">/dev/null</option>
+					</select>
+				</div>
+				<div class="field">
+					<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
+				</div>
+				<div class="field">
+					<input type="checkbox" id="human" name="human" /><label for="human">I'm a human</label>
+				</div>
+				<div class="field">
+					<label>But are you a robot?</label>
+					<input type="radio" id="robot_yes" name="robot" /><label for="robot_yes">Yes</label>
+					<input type="radio" id="robot_no" name="robot" /><label for="robot_no">No</label>
+				</div>
+			</div>
+			<ul class="actions special">
+				<li><a href="#" class="button">Get Started</a></li>
+			</ul>
+		</form>
+		<hr/>
+		-->
+
+		<footer>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter">Twitter</a></li>
+				<li><a href="#" class="icon brands fa-instagram">Instagram</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f">Facebook</a></li>
+			</ul>
+		</footer>
+	</section>
+
+<!-- FOOTER -->
+<?php include "src/templates/footer.php"; ?>
