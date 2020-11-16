@@ -10,8 +10,6 @@
 		require "common.php";
 
 		try {
-			//$connection = new PDO($dsn, $username, $password, $options);
-
 			$new_user = array(
 				"firstname"	=> $_POST['firstname'],
 				"lastname"	=> $_POST['lastname'],
