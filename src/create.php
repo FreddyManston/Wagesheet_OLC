@@ -10,7 +10,7 @@
 		require "common.php";
 
 		try {
-			$connection = new PDO($dsn, $username, $password, $options);
+			//$connection = new PDO($dsn, $username, $password, $options);
 
 			$new_user = array(
 				"firstname"	=> $_POST['firstname'],
@@ -28,7 +28,7 @@
 				":" . implode(", :", array_keys($new_user))
 			);
 			echo $sql;
-			$statement = $connection->prepare($sql);
+			$statement = $db->prepare($sql);
 			$statement->execute($new_user);
 		}
 		catch(PDOException $error) {
