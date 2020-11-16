@@ -19,12 +19,13 @@ $db = new PDO($dsn, $username, $password, $options);
   * Configuration for Heroku database connection.
   */
 
-$dsn = "pgsql:"
-    . "host=ec2-52-5-176-53.compute-1.amazonaws.com;"
-    . "dbname=daiqsc8i889tmh;"
-    . "user=uecwjhvfhzqkrf;"
-    . "port=5432;"
-    . "sslmode=require;"
-    . "password=b3fbbc28424ae6331197dc317a0732308efcc2d51f4ddd276fc25699d549acb6";
+$credentials = parse_url(getenv("DATABASE_URL"));
 
-$db = new PDO($dsn);
+$db = new PDO("pgsql:" . sprintf(
+    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+    $credentials["host"],
+    $credentials["port"],
+    $credentials["user"],
+    $credentials["pass"],
+    ltrim($credentials["path"], "/")
+));
